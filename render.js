@@ -3,29 +3,33 @@ const currentWindow = remote.getCurrentWindow();
 const {consolelog} = remote.require("./app.js");
 
 function drawCanvasCircle(){
-  var can = document.getElementById('wheelCanvas');
-  var ctx = can.getContext("2d");
-  var img = ctx.createImageData(300,300);
-  var data = img.data;
-  var radius = 50;
-  var grd = ctx.createRadialGradient(150,150,0,150,150,150);
-  var grd2 = ctx.createLinearGradient(0,0,150,150);
-  grd2.addColorStop(0,'red');
-  grd2.addColorStop(1/6.0,'orange');
-  grd2.addColorStop(2/6.0,'yellow');
-  grd2.addColorStop(3/6.0,'green');
-  grd2.addColorStop(4/6.0,'blue');
-  grd2.addColorStop(5/6.0,'indigo');
-  grd2.addColorStop(6/6.0,'violet');
-  grd.addColorStop(0,'white');
-  grd.addColorStop(0.5,'green');
-  grd.addColorStop(1,'red');
-  ctx.fillStyle = grd;
-  ctx.beginPath();
-  ctx.arc(150,150,150,0,2*Math.PI, true);
-  ctx.fill();
+  var canvas = document.getElementById('wheelCanvas');
+  var graphics = canvas.getContext("2d");
+  var CX = canvas.width / 2,
+      CY = canvas.height / 2,
+      sx = CX-10,
+      sy = CY-10;
+
+  graphics.beginPath();
+  graphics.arc(CX,CY,sx+5,0,2*Math.PI);
+  graphics.fill();
+  for (var i = 0; i < 360; i += 0.1) {
+      var rad = i * (2 * Math.PI) / 360;
+      var grad = graphics.createLinearGradient(CX, CY, CX + sx * Math.cos(rad), CY + sy * Math.sin(rad));
+      grad.addColorStop(0, "white");
+      grad.addColorStop(0.05, "white");
+      grad.addColorStop(0.95, "hsla(" + i + ", 100%, 50%, 1.0)");
+      grad.addColorStop(1, "hsla(" + i + ", 100%, 50%, 1.0)");
+      graphics.strokeStyle = grad;
+      graphics.beginPath();
+      graphics.moveTo(CX, CY);
+      graphics.lineTo(CX + sx * Math.cos(rad), CY + sy * Math.sin(rad));
+      graphics.stroke();
+  }
+
 }
 
+//Helper function, though i ended up not using it
 function hsv2rgb(hue, sat, val){
 let chroma = val * sat;
 let hue1 = hue/60;
