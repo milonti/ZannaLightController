@@ -6,23 +6,69 @@
   </title>
 </head>
 <body>
-  <table>
+  <table style="width: 80%; margin-left: auto; margin-right: auto;" cellpadding="2px" cellspacing="2px">
     <tr>
-      <th>
-        Stuff goes here
+      <th style="width: 50%;">
+        <button onclick="drawCanvasCircle();">Render Circle</button>
       </th>
-      <th>
+      <th style="width: 50%;">
         Second Column Here
       </th>
     </tr>
     <tr>
       <td>
-        <button> Here is a button for a thing </button>
+        <canvas id="wheelCanvas" width="300" height="300"></canvas>
       </td>
-      <td>
-        <b>Yo look at me!</b>
+      <td class="controls" style="text-align: left;">
+        <table style="text-align: right;">
+          <tr>
+            <td>
+              <label>R:</label>
+            </td>
+            <td>
+              <input type="text" id="rVal" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label>G:</label>
+            </td>
+            <td>
+              <input type="text" id="gVal" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label>B:</label>
+            </td>
+            <td>
+              <input type="text" id="bVal" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label>RGB:</label>
+            </td>
+            <td>
+              <input type="text" id="rgb" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label>HEX:</label>
+            </td>
+            <td>
+              <input type="text" id="hexVal" />
+            </td>
+          </tr>
+        </table>
       </td>
+
     </tr>
   </table>
+  <script src='../render.js'></script>
+  <script>
+    drawCanvasCircle();
+  </script>
 </body>
 </html>

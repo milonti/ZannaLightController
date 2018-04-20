@@ -23,6 +23,10 @@ function createWindow(){
   })
 }
 
+exports.consolelog = function(msg){
+  console.log(msg+"\n from renderer");
+}
+
 app.on('ready', createWindow);
 app.on('window-all-closed', () => {
   console.log('Closing application');
