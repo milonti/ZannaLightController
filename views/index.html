@@ -18,25 +18,19 @@
     </tr>
     <tr>
       <td>
-        <canvas id="wheelCanvas" width="300" height="300" />
+        <canvas id="wheelCanvas" width="300" height="300" onclick="getColor();"/>
       </td>
       <td style="align-content: center;">
-        <table style="text-align: right;" class="controls">
-        <tr>
-          <td colspan="2">
-            <div>
-              R: <input type="range" min="0" max="255" step="1" /><br>
-              G: <input type="range" min="0" max="255" step="1" /><br>
-              B: <input type="range" min="0" max="255" step="1" />
-            </div>
-          </td>
-        </tr>
+        <table style="text-align: right;" class="controls" >
           <tr>
             <td>
               <label>R:</label>
             </td>
             <td>
-              <input type="text" id="rVal" />
+              <input type="text" id="rVal" maxlength="3" size="3"  class="smallText" value="0"/>
+            </td>
+            <td>
+              <input type="range" min="0" max="255" step="1" value="0" id="rSlide" />
             </td>
           </tr>
           <tr>
@@ -44,7 +38,10 @@
               <label>G:</label>
             </td>
             <td>
-              <input type="text" id="gVal" />
+              <input type="text" id="gVal" maxlength="3" size="3" class="smallText" value="0"/>
+            </td>
+            <td>
+              <input type="range" min="0" max="255" step="1" value="0" id="gSlide" />
             </td>
           </tr>
           <tr>
@@ -52,14 +49,17 @@
               <label>B:</label>
             </td>
             <td>
-              <input type="text" id="bVal" />
+              <input type="text" id="bVal" maxlength="3" size="3" class="smallText" value="0"/>
+            </td>
+            <td>
+              <input type="range" min="0" max="255" step="1" value="0" id="bSlide" />
             </td>
           </tr>
           <tr>
             <td>
               <label>RGB:</label>
             </td>
-            <td>
+            <td colspan="2">
               <input type="text" id="rgb" />
             </td>
           </tr>
@@ -67,8 +67,16 @@
             <td>
               <label>HEX:</label>
             </td>
-            <td>
+            <td colspan="2">
               <input type="text" id="hexVal" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label>HSV:</label>
+            </td>
+            <td colspan="2">
+              <input type="text" id="hsvVal" />
             </td>
           </tr>
         </table>

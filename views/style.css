@@ -20,3 +20,23 @@ table.mainTable th
 {
   padding: 2px;
 }
+
+.controls td
+{
+  border: 2px solid green;
+}
+
+canvas {
+  cursor: crosshair;
+}
+
+.controls td > input[type="text"] {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 5px;
+  width: 100%;
+}
+
+input.smallText {
+  text-align: right;
+}
