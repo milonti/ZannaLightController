@@ -10,7 +10,7 @@
   <table class="mainTable">
     <tr>
       <th style="width: 50%;">
-        <button onclick="drawCanvasCircle();">Render Circle</button>
+        <div class="previewZone" id="previewDiv"></div>
       </th>
       <th style="width: 50%;">
         Second Column Here
@@ -18,7 +18,7 @@
     </tr>
     <tr>
       <td>
-        <canvas id="wheelCanvas" width="300" height="300" onclick="getColor(event);"/>
+        <canvas id="wheelCanvas" width="300" height="300" onclick="getColorByClick(event);"/>
       </td>
       <td >
         <table style="display: inline-table;" class="controls" >
@@ -60,7 +60,7 @@
               <label>RGB:</label>
             </td>
             <td colspan="2">
-              <input type="text" id="rgb" />
+              <input type="text" id="rgbVal" />
             </td>
           </tr>
           <tr>
@@ -73,10 +73,10 @@
           </tr>
           <tr>
             <td>
-              <label>HSV:</label>
+              <label>HSL:</label>
             </td>
             <td colspan="2">
-              <input type="text" id="hsvVal" />
+              <input type="text" id="hslVal" />
             </td>
           </tr>
         </table>

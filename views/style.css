@@ -42,3 +42,9 @@ canvas {
 .smallText {
   text-align: right;
 }
+
+.previewZone {
+  background-color: black;
+  border: 1px black solid;
+  min-height: 2em;
+}

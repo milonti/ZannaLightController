@@ -3,30 +3,45 @@ const currentWindow = remote.getCurrentWindow();
 const screen = remote.screen;
 const {consolelog, runFunc} = remote.require("./app.js");
 
+var canvas = document.getElementById('wheelCanvas');
+var ctx = canvas.getContext('2d');
+
+var rSlide = document.getElementById('rSlide');
+var gSlide = document.getElementById('gSlide');
+var bSlide = document.getElementById('bSlide');
+var rVal = document.getElementById('rVal');
+var bVal = document.getElementById('bVal');
+var gVal = document.getElementById('gVal');
+
+var rgbField = document.getElementById('rgbVal');
+var hexField = document.getElementById('hexVal');
+var hslField = document.getElementById('hslVal');
+
+var previewDiv = document.getElementById('previewDiv');
+
 function drawCanvasCircle(){
-  var canvas = document.getElementById('wheelCanvas');
-  var graphics = canvas.getContext("2d");
   var CX = canvas.width / 2,
       CY = canvas.height / 2,
       sx = CX-10,
       sy = CY-10;
 
-  graphics.beginPath();
-  graphics.arc(CX,CY,sx+2,0,2*Math.PI);
-  graphics.fill();
+  ctx.beginPath();
+  ctx.arc(CX,CY,sx+2,0,2*Math.PI);
+  ctx.fill();
   for (var i = 0; i < 360; i += 0.1) {
       var rad = i * (2 * Math.PI) / 360;
-      var grad = graphics.createLinearGradient(CX, CY, CX + sx * Math.cos(rad), CY + sy * Math.sin(rad));
+      var grad = ctx.createLinearGradient(CX, CY, CX + sx * Math.cos(rad), CY + sy * Math.sin(rad));
       grad.addColorStop(0, "hsla(" + i + ", 0%, 100%, 1.0)");
       grad.addColorStop(0.25, "hsla(" + i + ", 100%, 87.5%, 1.0)");
       grad.addColorStop(0.5, "hsla(" + i + ", 100%, 75%, 1.0)");
+      grad.addColorStop(0.90, "hsla(" + i + ", 100%, 50%, 1.0)");
       grad.addColorStop(0.95, "hsla(" + i + ", 100%, 50%, 1.0)");
       grad.addColorStop(1, "hsla(" + i + ", 100%, 0%, 1.0)");
-      graphics.strokeStyle = grad;
-      graphics.beginPath();
-      graphics.moveTo(CX, CY);
-      graphics.lineTo(CX + sx * Math.cos(rad), CY + sy * Math.sin(rad));
-      graphics.stroke();
+      ctx.strokeStyle = grad;
+      ctx.beginPath();
+      ctx.moveTo(CX, CY);
+      ctx.lineTo(CX + sx * Math.cos(rad), CY + sy * Math.sin(rad));
+      ctx.stroke();
   }
 
 }
@@ -88,7 +103,9 @@ function rgbToHsv(r, g, b) {
 
     h /= 6;
   }
-
+  h = h.toFixed(3);
+  s = s.toFixed(3);
+  v = v.toFixed(3);
   return [ h, s, v ];
 }
 
@@ -107,17 +124,59 @@ function rgb2hex(r,g,b){
   if(r < 16 ) rHex = "0" + rHex;
   if(g < 16 ) gHex = "0" + gHex;
   if(b < 16 ) bHex = "0" + bHex;
-  return "#"+rHex+gHex+bHex;
+  return String("#"+rHex+gHex+bHex).toUpperCase();
 }
 
-function getColor(ev){
-  runFunc(steve);
+function getColorByClick(ev){
+  console.log(ev);
+  var pix = ctx.getImageData(ev.offsetX,ev.offsetY,1,1).data;
+  console.log(pix[0],pix[1],pix[2]);
+  sendColor(pix,'Click');
 }
 
-function steve(){
-  console.log("hello!");
+function SendColorToSliders(color){
+  rSlide.value = color[0];
+  gSlide.value = color[1];
+  bSlide.value = color[2];
+  rVal.value = color[0];
+  gVal.value = color[1];
+  bVal.value = color[2];
 }
 
+function SendColorToHexField(color){
+  hexField.value = rgb2hex(color[0],color[1],color[2]);
+}
+
+function SendColorToRgbField(color){
+  rgbField.value = 'rgb('+color[0]+','+color[1]+','+color[2]+')';
+}
+
+function SendColorToHslField(color){
+  var val = rgbToHsv(color[0],color[1],color[2]);
+  hslField.value = 'hsl('+val[0]+','+val[1]+','+val[2]+')';
+}
+
+function SendColorToPreview(color){
+  console.log(color);
+  previewDiv.style.backgroundColor = 'rgb('+color[0]+','+color[1]+','+color[2]+')';
+}
+
+Sendables = {
+  'Preview':0,
+  'HslField':1,
+  'RgbField':2,
+  'HexField':3,
+  'Sliders':4
+}
+
+function sendColor(color,sender){
+  for(place in Sendables){
+    if(place != sender){
+      eval('SendColorTo'+place+'(color)');
+    }
+  }
+
+}
 //View Prep Work
 //Attach event listeners and run initial functions Here
 runFunc(drawCanvasCircle);

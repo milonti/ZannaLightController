@@ -28,12 +28,10 @@ exports.consolelog = function(msg){
 }
 
 //Run a function in the main process from anywhere
-exports.runFunc = function(func){
-  console.log("Running " + func.name + " from outside main process")
-  func();
-  // console.log(Object.getOwnPropertyDescriptors(func));
-  console.log("MORE");
+exports.runFunc = function(func1){
+  func1();
 }
+
 
 app.on('ready', createWindow);
 app.on('window-all-closed', () => {
