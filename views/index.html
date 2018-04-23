@@ -5,16 +5,20 @@
     Zanna Hue Light Controller
   </title>
   <link rel="stylesheet" type="text/css" href="style.css">
-  <link rel="stylesheet" href="node_modules/electron-tabs/electron-tabs.css">
 </head>
 <body>
-  <div class="etabs-tabgroup">
-    <div class="etabs-tabs">
-    </div> <!-- tab div -->
-    <div class="etabs-buttons">
-    </div> <!-- tab div -->
+  <div id="tabs-div">
+    <ul class="tabgroup">
+      <li class="tab active" id="tab_colorPicker" onclick="changeTab(event)">
+        Color Picker
+      </li> <!-- tab div -->
+      <li class="tab" id="tab_lightSet" onclick="changeTab(event)">
+        Light Settings
+      </li> <!-- tab div -->
+    </ul>
   </div><!-- Tabgroup div -->
-  <div class="etabs-views">
+  <div class="viewport">
+    <webview id="tab-viewport"></webview>
   </div>
   <!-- <table class="mainTable">
     <tr>
@@ -94,7 +98,7 @@
     </tr>
   </table> -->
 
-  <script src='../renderers/colorPickerRender.js'></script>
-  <script src='../renderers/tabRender.js' />
+  <!-- <script src='../renderers/colorPickerRender.js'></script> -->
+  <script src='../renderers/tabRender.js' > </script>
 </body>
 </html>

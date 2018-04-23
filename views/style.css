@@ -48,3 +48,23 @@ canvas {
   border: 1px black solid;
   min-height: 2em;
 }
+
+.tabgroup {
+  line-height: 24px;
+  margin: 0;
+  padding: 0;
+}
+
+.tab {
+  background-color: grey;
+  border: 3px solid #414141;
+  display: inline-block;
+  font-weight: bold;
+  margin: auto;
+  padding: 15px 1px;
+  text-align:center;
+}
+
+.tab .active {
+  border-bottom-color: grey;
+}

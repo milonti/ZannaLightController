@@ -15,8 +15,8 @@
   "license": "MIT",
   "dependencies": {
     "electron": "^1.8.4",
-    "electron-tabs": "^0.9.1",
     "express": "^4.16.3",
+    "jquery": "^3.3.1",
     "node-hue-api": "^2.4.2"
   },
   "devDependencies": {}
