@@ -6,8 +6,10 @@ table.mainTable
 {
   border: 2px solid black;
   border-spacing: 2px;
+  font-weight: bolder;
   margin-left: auto;
   margin-right: auto;
+  margin-top: .5em;
   width: 90%;
 }
 
@@ -49,22 +51,87 @@ canvas {
   min-height: 2em;
 }
 
-.tabgroup {
-  line-height: 24px;
+body {
+  height: 100%;
   margin: 0;
-  padding: 0;
 }
 
-.tab {
+.tabgroup {
+  line-height: 24px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+.tabgroup:after {
+  bottom: 0;
+  left: 0;
+  border-bottom: 3px solid #414141;
+  content: "";
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+}
+
+.tabgroup:before {
+  z-index: 1;
+}
+
+.tabgroup li {
   background-color: grey;
   border: 3px solid #414141;
   display: inline-block;
-  font-weight: bold;
-  margin: auto;
-  padding: 15px 1px;
+  margin: 0 0 0 5px;
+  padding: 0 10px;
   text-align:center;
+  position: relative;
+  z-index: 0;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  user-select: none;
+  cursor: default;
 }
 
-.tab .active {
-  border-bottom-color: grey;
+.tabgroup li:before,
+.tabgroup li:after {
+  position: absolute;
+  bottom: -1px;
+  width: 6px;
+  height: 6px;
+  content: " ";
+  border: 2px solid #414141;
+}
+
+.tabgroup li:before {
+  left: -9px;
+  border-bottom-right-radius: 6px;
+  border-width: 0 1px 1px 0;
+  box-shadow: 2px 2px 0 #414141;
+}
+.tabgroup li:after {
+  right: -9px;
+  border-bottom-left-radius: 6px;
+  border-width: 0 0 1px 1px;
+  box-shadow: -2px 2px 0 #414141;
+}
+
+.tabgroup .active {
+  background-color: rgb(152, 221, 93);
+  border-bottom-color: rgb(152, 221, 93);
+  z-index: 2;
+}
+
+.tabgroup .active:before {
+  box-shadow: 2px 2px 0 #414141;
+}
+.tabgroup .active:after {
+  box-shadow: -2px 2px 0 #414141;
+}
+
+.viewport {
+  background-color: rgb(152, 221, 93);
+  width: 100%;
+  height: 100%;
+  position: absolute;
 }

@@ -9,16 +9,16 @@
 <body>
   <div id="tabs-div">
     <ul class="tabgroup">
-      <li class="tab active" id="tab_colorPicker" onclick="changeTab(event)">
+      <li class="active" id="tab_ColorPicker" onclick="changeTab(event)">
         Color Picker
       </li> <!-- tab div -->
-      <li class="tab" id="tab_lightSet" onclick="changeTab(event)">
+      <li class="" id="tab_LightSet" onclick="changeTab(event)">
         Light Settings
       </li> <!-- tab div -->
     </ul>
   </div><!-- Tabgroup div -->
   <div class="viewport">
-    <webview id="tab-viewport"></webview>
+    <webview id="tab-viewport" nodeintegration disablewebsecurity src="./tabColorPicker.html" class="viewport"></webview>
   </div>
   <!-- <table class="mainTable">
     <tr>
@@ -99,6 +99,6 @@
   </table> -->
 
   <!-- <script src='../renderers/colorPickerRender.js'></script> -->
-  <script src='../renderers/tabRender.js' > </script>
+  <script src="../renderers/tabRender.js" > </script>
 </body>
 </html>
