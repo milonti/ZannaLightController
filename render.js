@@ -105,7 +105,6 @@ function rgbToHsv(r, g, b) {
   }
   h = h.toFixed(3);
   s = s.toFixed(3);
-  v = v.toFixed(3);
   return [ h, s, v ];
 }
 
