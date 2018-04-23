@@ -1,3 +1,6 @@
+td {
+  text-align: center;
+}
 
 table.mainTable
 {
@@ -32,11 +35,10 @@ canvas {
 
 .controls td > input[type="text"] {
   box-sizing: border-box;
-  margin: 0px;
   padding: 5px;
   width: 100%;
 }
 
-input.smallText {
+.smallText {
   text-align: right;
 }

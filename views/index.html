@@ -18,10 +18,10 @@
     </tr>
     <tr>
       <td>
-        <canvas id="wheelCanvas" width="300" height="300" onclick="getColor();"/>
+        <canvas id="wheelCanvas" width="300" height="300" onclick="getColor(event);"/>
       </td>
-      <td style="align-content: center;">
-        <table style="text-align: right;" class="controls" >
+      <td >
+        <table style="display: inline-table;" class="controls" >
           <tr>
             <td>
               <label>R:</label>
@@ -85,8 +85,5 @@
     </tr>
   </table>
   <script src='../render.js'></script>
-  <script>
-    drawCanvasCircle();
-  </script>
 </body>
 </html>
