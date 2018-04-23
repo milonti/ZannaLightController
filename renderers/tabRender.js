@@ -4,9 +4,9 @@ const url = require('url');
 const $ = require('jquery');
 
 let wv = document.getElementById('tab-viewport');
-var activeTab = document.getElementById('tab_colorPicker');
+var activeTab = document.getElementById('tab_ColorPicker');
 var tabMemory = {
-  'tab_colorPicker': remote.getCurrentWebContents();
+  'tab_ColorPicker': web.id,
 }
 
 const tabs = {
@@ -18,7 +18,14 @@ function changeTab(ev){
   if(ev.srcElement == activeTab){
     return; //No need to switch
   }
-  activeTab = ev.srcElement;
-  wv.src = "../views/"+tabs[activeTab.id];
-  console.log("../views/"+tabs[activeTab.id]);
+  //Check for old tab in memory
+  if(tabMemory[ev.srcElement.id] == undefined){
+    tabMemory[activeTab.id] = web.id;
+    activeTab = ev.srcElement;
+    wv.src = "../views/"+tabs[activeTab.id];
+  }
+  else {
+
+  }
+
 }
