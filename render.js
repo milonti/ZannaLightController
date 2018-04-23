@@ -1,6 +1,7 @@
 const {remote, ipcRenderer} = require('electron');
 const currentWindow = remote.getCurrentWindow();
-const {consolelog} = remote.require("./app.js");
+const screen = remote.screen;
+const {consolelog, runFunc} = remote.require("./app.js");
 
 function drawCanvasCircle(){
   var canvas = document.getElementById('wheelCanvas');
@@ -19,7 +20,6 @@ function drawCanvasCircle(){
       grad.addColorStop(0, "hsla(" + i + ", 0%, 100%, 1.0)");
       grad.addColorStop(0.25, "hsla(" + i + ", 100%, 87.5%, 1.0)");
       grad.addColorStop(0.5, "hsla(" + i + ", 100%, 75%, 1.0)");
-      // grad.addColorStop(0.93, "hsla(" + i + ", 100%, 50%, 1.0)");
       grad.addColorStop(0.95, "hsla(" + i + ", 100%, 50%, 1.0)");
       grad.addColorStop(1, "hsla(" + i + ", 100%, 0%, 1.0)");
       graphics.strokeStyle = grad;
@@ -56,9 +56,49 @@ if (hue1 >= 0 && hue1 <= 1) {
     // Change r,g,b values from [0,1] to [0,255]
     return [255*r,255*g,255*b];
 }
-function rgb2Hsv(r,g,b){
 
+/**
+ * Converts an RGB color value to HSV. Conversion formula
+ * adapted from http://en.wikipedia.org/wiki/HSV_color_space.
+ * Assumes r, g, and b are contained in the set [0, 255] and
+ * returns h, s, and v in the set [0, 1].
+ *
+ * @param   Number  r       The red color value
+ * @param   Number  g       The green color value
+ * @param   Number  b       The blue color value
+ * @return  Array           The HSV representation
+ */
+function rgbToHsv(r, g, b) {
+  r /= 255, g /= 255, b /= 255;
+
+  var max = Math.max(r, g, b), min = Math.min(r, g, b);
+  var h, s, v = max;
+
+  var d = max - min;
+  s = max == 0 ? 0 : d / max;
+
+  if (max == min) {
+    h = 0; // achromatic
+  } else {
+    switch (max) {
+      case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+      case g: h = (b - r) / d + 2; break;
+      case b: h = (r - g) / d + 4; break;
+    }
+
+    h /= 6;
+  }
+
+  return [ h, s, v ];
 }
+
+/**
+ * Converts an RGB color value to a hex string.
+ * @param   Number  r       The red color value
+ * @param   Number  g       The green color value
+ * @param   Number  b       The blue color value
+ * @return  String          The hex string
+ */
 function rgb2hex(r,g,b){
   var rHex = r.toString(16);
   var bHex = b.toString(16);
@@ -70,4 +110,14 @@ function rgb2hex(r,g,b){
   return "#"+rHex+gHex+bHex;
 }
 
-function getColor(){}
+function getColor(ev){
+  runFunc(steve);
+}
+
+function steve(){
+  console.log("hello!");
+}
+
+//View Prep Work
+//Attach event listeners and run initial functions Here
+runFunc(drawCanvasCircle);
