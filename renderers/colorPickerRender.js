@@ -1,4 +1,4 @@
-const {remote, ipcRenderer} = require('electron');
+const {ipcRenderer, remote} = require('electron');
 const currentWindow = remote.getCurrentWindow();
 const screen = remote.screen;
 const {consolelog, runFunc} = remote.require("./app.js");

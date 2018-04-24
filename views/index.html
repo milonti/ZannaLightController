@@ -5,6 +5,8 @@
     Zanna Hue Light Controller
   </title>
   <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="import" src="./tabColorPicker.html" />
+  <link rel="import" src="./tabLighSet.html" />
 </head>
 <body>
   <div id="tabs-div">
@@ -17,9 +19,13 @@
       </li> <!-- tab div -->
     </ul>
   </div><!-- Tabgroup div -->
-  <div class="viewport">
-    <webview id="tab-viewport" nodeintegration disablewebsecurity src="./tabColorPicker.html" class="viewport"></webview>
+  <div class="tabview tactive" id="view_ColorPicker">
+
   </div>
+  <div class="tabview" id="view_LightSet">
+
+  </div>
+
   <!-- <table class="mainTable">
     <tr>
       <th style="width: 50%;">
@@ -100,5 +106,9 @@
 
   <!-- <script src='../renderers/colorPickerRender.js'></script> -->
   <script src="../renderers/tabRender.js" > </script>
+  <script type="text/javascript">
+    loadTab('view_ColorPicker','./tabColorPicker.html');
+    loadTab('view_LightSet','./tabLighSet.html');
+  </script>
 </body>
 </html>

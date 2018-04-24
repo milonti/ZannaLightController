@@ -129,8 +129,12 @@ body {
   box-shadow: -2px 2px 0 #414141;
 }
 
-.viewport {
+.tabview{
+  display:none;
+}
+.tactive {
   background-color: rgb(152, 221, 93);
+  display: inline-block;
   width: 100%;
   height: 100%;
   position: absolute;

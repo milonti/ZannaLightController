@@ -1,31 +1,26 @@
-const {remote} = require('electron');
-const web = remote.getCurrentWebContents();
 const url = require('url');
 const $ = require('jquery');
-
-let wv = document.getElementById('tab-viewport');
-var activeTab = document.getElementById('tab_ColorPicker');
-var tabMemory = {
-  'tab_ColorPicker': web.id,
-}
 
 const tabs = {
   "tab_ColorPicker" : "tabColorPicker.html",
   "tab_LightSet"    : "tabLightSet.html"
 }
 
+var activeTab = document.getElementById("tab_ColorPicker");
+
 function changeTab(ev){
-  if(ev.srcElement == activeTab){
-    return; //No need to switch
-  }
-  //Check for old tab in memory
-  if(tabMemory[ev.srcElement.id] == undefined){
-    tabMemory[activeTab.id] = web.id;
+  if(ev.srcElement != activeTab){
+    var tName = ev.srcElement.id;
+    activeTab.classList.remove("active");
+    document.getElementById("view"+activeTab.id.substring(3)).classList.remove('tactive');
     activeTab = ev.srcElement;
-    wv.src = "../views/"+tabs[activeTab.id];
+    activeTab.classList.add("active");
+    document.getElementById("view"+activeTab.id.substring(3)).classList.add('tactive');
   }
-  else {
+}
 
-  }
-
+function loadTab(idTarget, htmlPath){
+  $.get(htmlPath, function(data) {
+    $("#"+idTarget).html(data);
+  })
 }
