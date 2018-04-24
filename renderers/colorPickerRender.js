@@ -1,7 +1,7 @@
-const {ipcRenderer, remote} = require('electron');
-const currentWindow = remote.getCurrentWindow();
-const screen = remote.screen;
-const {consolelog, runFunc} = remote.require("./app.js");
+var {ipcRenderer, remote} = require('electron');
+var currentWindow = remote.getCurrentWindow();
+var screen = remote.screen;
+var {consolelog, runFunc} = remote.require("./app.js");
 
 var canvas = document.getElementById('wheelCanvas');
 var ctx = canvas.getContext('2d');

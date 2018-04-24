@@ -23,6 +23,10 @@ function createWindow(){
   })
 }
 
+function discoverBridges(){
+
+}
+
 exports.consolelog = function(msg){
   console.log(msg+"\n from renderer");
 }

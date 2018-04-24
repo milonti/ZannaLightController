@@ -6,23 +6,24 @@
   </title>
   <link rel="stylesheet" type="text/css" href="style.css">
   <link rel="import" src="./tabColorPicker.html" />
-  <link rel="import" src="./tabLighSet.html" />
+  <link rel="import" src="./tabLightSet.html" />
+  <link rel="import" src="./HueBridgeInfo.html" />
 </head>
 <body>
   <div id="tabs-div">
     <ul class="tabgroup">
-      <li class="active" id="tab_ColorPicker" onclick="changeTab(event)">
+      <li class="" id="tab_ColorPicker" onclick="changeTab(event)">
         Color Picker
       </li> <!-- tab div -->
-      <li class="" id="tab_LightSet" onclick="changeTab(event)">
+      <li class="active" id="tab_LightSet" onclick="changeTab(event)">
         Light Settings
       </li> <!-- tab div -->
     </ul>
   </div><!-- Tabgroup div -->
-  <div class="tabview tactive" id="view_ColorPicker">
+  <div class="tabview " id="view_ColorPicker">
 
   </div>
-  <div class="tabview" id="view_LightSet">
+  <div class="tabview tactive" id="view_LightSet">
 
   </div>
 
@@ -108,7 +109,7 @@
   <script src="../renderers/tabRender.js" > </script>
   <script type="text/javascript">
     loadTab('view_ColorPicker','./tabColorPicker.html');
-    loadTab('view_LightSet','./tabLighSet.html');
+    loadTab('view_LightSet','./tabLightSet.html');
   </script>
 </body>
 </html>
