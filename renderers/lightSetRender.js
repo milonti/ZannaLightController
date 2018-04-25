@@ -2,7 +2,7 @@ var $ = require('jquery');
 var hue = require('node-hue-api');
 
 
-function findBridge(){
+function findBridges(){
   var bridges;
   hue.nupnpSearch().then(function(bridges){
     console.log("Found bridges: ", bridges);
@@ -10,6 +10,7 @@ function findBridge(){
       console.log(bridges[b])
       // console.log(JSON.stringify(bridges[b],replacer));
     }
+    return bridges;
   }).done();
 }
 
