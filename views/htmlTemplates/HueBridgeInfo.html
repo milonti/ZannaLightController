@@ -1,4 +1,4 @@
-<template id="temp_HueBridgeInfo">
+<template id="tmpl_HueBridgeInfo">
   <div class="HueBridgeInfo">
       <div>
           <table>
@@ -9,15 +9,15 @@
                   <tr>
                       <td class="HueInfo">
                           <b>MAC Address</b>
-                          <div></div>
+                          <div><slot name="bridgeMac"></slot></div>
                       </td>
                       <td class="HueInfo">
                           <b>IP Address</b>
-                          <div></div>
+                          <div><slot name="bridgeIp"></slot></div>
                       </td>
                       <td class="HueInfo">
                           <b>Bridge ID:</b>
-                          <div></div>
+                          <div><slot name="bridgeId"></slot></div>
                       </td>
                   </tr>
               </tbody>

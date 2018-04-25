@@ -1,15 +1,6 @@
 var url = require('url');
 var $ = require('jquery');
 
-var hue = require('node-hue-api');
-
-function findBridge(){
-    hue.nupnpSearch().then(function(bridge){
-      console.log("Found bridge: ", bridge);
-      console.log(JSON.stringify(bridge));
-    }).done();
-}
-
 const tabs = {
   "tab_ColorPicker" : "tabColorPicker.html",
   "tab_LightSet"    : "tabLightSet.html"
@@ -28,7 +19,7 @@ function changeTab(ev){
   }
 }
 
-function loadTab(idTarget, htmlPath){
+function loadTabFromHtml(idTarget, htmlPath){
   $.get(htmlPath, function(data) {
     $("#"+idTarget).html(data);
   })
