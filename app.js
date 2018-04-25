@@ -15,7 +15,9 @@ function createWindow(){
   }))
 
   win.on('ready-to-show',() => {
+    win.maximize();
     win.show();
+    win.toggleDevTools();
   })
 
   win.on('closed',() => {

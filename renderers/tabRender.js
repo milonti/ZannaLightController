@@ -21,6 +21,6 @@ function changeTab(ev){
 
 function loadTabFromHtml(idTarget, htmlPath){
   $.get(htmlPath, function(data) {
-    $("#"+idTarget).html(data);
+    $("#"+idTarget).append(data);
   })
 }

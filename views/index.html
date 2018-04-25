@@ -9,15 +9,14 @@
       console.log('Loaded import: ' + e.target.href);
       console.log(e);
     }
-    function handleError(e) {
+    function handleError(e,err) {
       console.log('Error loading: ' + e.target.href);
-      console.log(e);
+      console.log(err);
     }
   </script>
   <link rel="stylesheet" type="text/css" href="style.css">
-  <link rel="import" src="tabColorPicker.html" onload="handleLoad(event)" onerror="handleError(event)"/>
-  <link rel="import" src="tabLightSet.html" onload="handleLoad(event)" onerror="handleError(event)"/>
-  <link rel="import" src="HueBridgeInfo.html" onload="handleLoad(event)" onerror="handleError(event)"/>
+  <link rel="import" href="tabColorPicker.html" onload="" onerror="handleError(event,error)"/>
+  <link rel="import" href="tabLightSet.html" onload="" onerror="handleError(event,error)"/>
 </head>
 <body>
   <div id="tabs-div">

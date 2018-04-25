@@ -176,6 +176,7 @@ function sendColor(color,sender){
   }
 
 }
+
 //View Prep Work
 //Attach event listeners and run initial functions Here
-runFunc(drawCanvasCircle);
+drawCanvasCircle();
