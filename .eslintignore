@@ -2,6 +2,9 @@
 logs
 *.log
 
+#My old, horrible code (according to ESLint)
+oldstuff/.
+
 # Runtime data
 pids
 *.pid

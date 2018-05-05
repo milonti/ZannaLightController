@@ -1,5 +1,16 @@
 {
+  "parserOptions":{
+    "ecmaVersion": 6,
+    "ecmaFeatures":{
+      "jsx":true
+      }
+    },
   "rules": {
+    "linebreak-style": "off",
+    "space-before-blocks":"warn",
+    "import/no-unresolved":"off",
+    "no-trailing-spaces": "warn",
+    "no-unused-vars": "warn",
     "flowtype/boolean-style": ["error", "boolean"],
     "flowtype/define-flow-type": "warn",
     "flowtype/delimiter-dangle": ["error", "never"],
