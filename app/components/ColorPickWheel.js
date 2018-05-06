@@ -7,6 +7,7 @@ export default class ColorPickWheel extends Component {
     this.wheelCanvas = React.createRef();
   }
   componentWillMount() {
+    //This will draw the color wheel on the canvas.
     let CX = this.wheelCanvas.width / 2,
         CY = this.wheelCanvas.height / 2,
         sx = CX-10,

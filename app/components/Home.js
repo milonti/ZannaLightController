@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Home.css';
+import ColorPickWheel from './ColorPickWheel.js';
 
 type Props = {};
 
@@ -13,6 +14,7 @@ export default class Home extends Component<Props> {
       <div>
         <div className={styles.container} data-tid="container">
           <h2>Home</h2>
+          <ColorPickWheel />
           <Link to="/counter">to Counter</Link>
         </div>
       </div>
