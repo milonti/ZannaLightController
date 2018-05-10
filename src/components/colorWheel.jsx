@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import "./colorPickWheel.css";
+import "./colorWheel.css";
 
 class ColorWheel extends Component {
   constructor(props){
