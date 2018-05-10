@@ -4,8 +4,12 @@ import "./colorPickWheel.css";
 class ColorWheel extends Component {
   constructor(props){
     super(props);
+    this.previewBox = React.createRef();
     this.canvas = React.createRef();
     this.getColorByClick = this.getColorByClick.bind(this);
+    this.state = {
+      color: [255,255,255],
+    }
   }
   componentDidMount(){
     this.ctx = this.canvas.current.getContext('2d');
@@ -34,13 +38,25 @@ class ColorWheel extends Component {
     }
   }
   getColorByClick(ev){
-    var pix = this.ctx.getImageData(ev.nativeEvent.offsetX,ev.nativeEvent.offsetY,1,1).data;
+    let pix = this.ctx.getImageData(ev.nativeEvent.offsetX,ev.nativeEvent.offsetY,1,1).data;
     console.log(pix[0],pix[1],pix[2]);
+    this.setState({color: pix});
     // sendColor(pix,'Click');
   }
   render(){
+    let r,g,b;
+    r = this.state.color[0];
+    g = this.state.color[1];
+    b = this.state.color[2];
+    let preStyle = {
+      backgroundColor : 'rgb(' + r + ',' + g + ',' + b + ')'
+    }
     return (
-      <canvas ref={this.canvas} className="colorWheel" onClick={this.getColorByClick} width='300' height='300'></canvas>
+      <div className="colorWheelContainer">
+        <div ref={this.previewBox} className="previewBox" style={preStyle} ></div>
+        <canvas ref={this.canvas} className="colorWheel" onClick={this.getColorByClick}
+          width='300' height='300' style={preStyle}></canvas>
+      </div>
     )
   }
 }

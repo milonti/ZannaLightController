@@ -1,5 +1,21 @@
-.colorwheel {
+.colorWheelContainer {
+  display: inline-flex;
+  align-content: center;
+  flex-direction: column;
+}
+
+.previewBox {
+  cursor: default;
+  width: 300px;
+  height: 100px;
+  border: 3px solid black;
+  border-bottom: none;
+}
+
+.colorWheel {
   cursor: crosshair;
   width: 300px;
   height: 300px;
+  border: 3px solid black;
+  border-top: none;
 }
