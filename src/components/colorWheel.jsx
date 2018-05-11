@@ -37,6 +37,9 @@ class ColorWheel extends Component {
         this.ctx.stroke();
     }
   }
+  static getDerivedStateFromProps(nextProps, prevState){
+    return {color: nextProps.color};
+  }
   getColorByClick(ev){
     let pix = this.ctx.getImageData(ev.nativeEvent.offsetX,ev.nativeEvent.offsetY,1,1).data;
     console.log(pix[0],pix[1],pix[2]);
