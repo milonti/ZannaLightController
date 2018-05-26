@@ -1,0 +1,8 @@
+.smallText {
+  text-align: right;
+}
+input[type="text"] {
+  box-sizing: border-box;
+  padding: 5px;
+  width: 100%;
+}

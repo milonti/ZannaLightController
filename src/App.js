@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import ColorWheel from './components/colorWheel.jsx';
 import ColorPicker from './containers/colorPickContainer.jsx'
 
 class App extends Component {

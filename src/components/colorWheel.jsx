@@ -8,7 +8,7 @@ class ColorWheel extends Component {
     this.canvas = React.createRef();
     this.getColorByClick = this.getColorByClick.bind(this);
     this.state = {
-      color: [255,255,255],
+      color: this.props.color,
     }
   }
   componentDidMount(){
