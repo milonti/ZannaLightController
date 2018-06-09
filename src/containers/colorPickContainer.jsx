@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import ColorWheel from '../components/colorWheel.jsx';
+import ColorSliders from '../components/colorSliders.jsx';
 import './colorPickContainer.css'
 
 //This class holds all of the color picker controls
@@ -15,6 +16,7 @@ class cntr_ColorPicker extends Component {
     return (
       <div className="container">
         <ColorWheel color={this.state.color} />
+        <ColorSliders color={this.state.color} />
       </div>
     )
   }
